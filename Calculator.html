@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        #display {
+            width: 90%;
+            padding: 10px;
+            margin: 0 auto 10px auto;
+            display: block;
+            text-align: right;
+            font-size: 1.2em;
+            border: 1px solid #ced4da;
+            background: #e9ecef;
+            color: #495057;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+        button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Calculator</h2>
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendValue('%')">%</button>
+            <button onclick="backspace()">←</button>
+            <button onclick="appendValue('/')">/</button>
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('*')">*</button>
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('-')">-</button>
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('+')">+</button>
+            <button onclick="appendValue('00')">00</button>
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    
+
+
+<script>
+    function appendValue(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function backspace() {
+        let display = document.getElementById('display');
+        display.value = display.value.slice(0, -1);
+    }
+    function appendModulus() {
+            let display = document.getElementById('display').value;
+            if (display !== '') {
+                document.getElementById('display').value += '%';
+            }
+        }
+
+
+    function calculateResult() {
+        try {
+            let expression = document.getElementById('display').value;
+            if (expression.includes('%')) {
+                    let parts = expression.split('%');
+                    if (parts.length === 2) {
+                        let num1 = parseFloat(parts[0]);
+                        let num2 = parseFloat(parts[1]);
+                        document.getElementById('display').value = num1 % num2;
+                        return;
+                    } else {
+                        throw new Error("Invalid Modulus Expression");
+                    }
+                }
+            document.getElementById('display').value = eval(expression);
+        } catch (error) {
+            alert('Invalid Expression');
+        }
+    }
+</script>
+</body>
+</html>
