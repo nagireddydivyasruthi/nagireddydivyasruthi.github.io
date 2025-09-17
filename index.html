@@ -3,109 +3,1070 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electronics Store</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Emergency Support - Student Mental Health</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #4a6fa5 0%, #2c3e50 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .emergency-section {
+            padding: 30px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: #e74c3c;
+        }
+        
+        .sos-button {
+            display: block;
+            width: 200px;
+            height: 200px;
+            margin: 30px auto;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            border: none;
+        }
+        
+        .sos-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(231, 76, 60, 0.4);
+        }
+        
+        .sos-button:active {
+            transform: scale(0.95);
+        }
+        
+        .sos-button i {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .sos-button span {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .countdown {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .helplines {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .helpline-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border-left: 4px solid #4a6fa5;
+            cursor: pointer;
+        }
+        
+        .helpline-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .helpline-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .helpline-card h3 i {
+            margin-right: 10px;
+            color: #4a6fa5;
+        }
+        
+        .helpline-card p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .contact-info {
+            margin-top: 15px;
+        }
+        
+        .contact-info div {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            width: 24px;
+            color: #4a6fa5;
+            margin-right: 10px;
+        }
+        
+        .contact-info a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+        
+        .emergency-contacts {
+            margin-top: 40px;
+        }
+        
+        .instructions {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .instructions h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .instructions h3 i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .confirmation-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .confirmation-modal.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-content h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .modal-content p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #34495e;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .modal-button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .cancel-button {
+            background: #ecf0f1;
+            color: #7f8c8d;
+        }
+        
+        .confirm-button {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* New Campus Security Features */
+        .security-features {
+            margin-top: 40px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #4a6fa5;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-card h3 i {
+            margin-right: 10px;
+            color: #4a6fa5;
+        }
+        
+        .feature-card p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .feature-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #4a6fa5;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .feature-button:hover {
+            background: #3a5a80;
+        }
+        
+        .campus-map {
+            margin-top: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            background: #e8f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .map-placeholder {
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        .map-placeholder i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #4a6fa5;
+        }
+        
+        .safe-walk-request {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background: #4a6fa5;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            background: #3a5a80;
+        }
+        
+        .security-status {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #d1e0e0;
+        }
+        
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .status-active {
+            background: #2ecc71;
+        }
+        
+        .status-inactive {
+            background: #e74c3c;
+        }
+        
+        .status-maintenance {
+            background: #f39c12;
+        }
+        
+        /* Emergency Procedures Modal */
+        .procedures-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .procedures-modal.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .procedures-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .procedures-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .procedures-header h2 {
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+        }
+        
+        .procedures-header h2 i {
+            margin-right: 10px;
+            color: #e74c3c;
+        }
+        
+        .close-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s;
+        }
+        
+        .close-button:hover {
+            color: #e74c3c;
+        }
+        
+        .emergency-category {
+            margin-bottom: 25px;
+        }
+        
+        .emergency-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .emergency-category h3 i {
+            margin-right: 10px;
+            color: #4a6fa5;
+        }
+        
+        .procedure-steps {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .procedure-steps h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .procedure-steps h4 i {
+            margin-right: 8px;
+            color: #3498db;
+        }
+        
+        .procedure-steps ol {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+        
+        .procedure-steps li {
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        
+        @media (max-width: 768px) {
+            .sos-button {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .sos-button i {
+                font-size: 40px;
+            }
+            
+            .sos-button span {
+                font-size: 18px;
+            }
+            
+            .helplines, .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .campus-map {
+                height: 200px;
+            }
+            
+            .procedures-content {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Campus Emergency & Security Support</h1>
+            <p>Immediate help is available - Your safety is our priority</p>
+        </header>
+        
+        <div class="emergency-section">
+            <h2 class="section-title"><i class="fas fa-exclamation-circle"></i> Emergency SOS</h2>
+            
+            <button class="sos-button" id="sosButton">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>SOS</span>
+                <div class="countdown" id="countdown">5</div>
+            </button>
+            
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> How it works</h3>
+                <ol>
+                    <li>Press the SOS button if you're experiencing a mental health emergency</li>
+                    <li>The system will count down from 5 seconds before connecting you to emergency services</li>
+                    <li>During the countdown, you can cancel if needed</li>
+                    <li>Once activated, your location and pre-registered information will be shared with emergency responders</li>
+                </ol>
+            </div>
+            
+            <!-- New Campus Security Features Section -->
+            <div class="security-features">
+                <h2 class="section-title"><i class="fas fa-shield-alt"></i> Campus Security Services</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card" onclick="requestSafeWalk()">
+                        <h3><i class="fas fa-walking"></i> Safe Walk Service</h3>
+                        <p>Request a security escort to walk with you anywhere on campus, available 24/7.</p>
+                        <button class="feature-button">Request Now</button>
+                    </div>
+                    
+                    <div class="feature-card" onclick="viewEmergencyProcedures()">
+                        <h3><i class="fas fa-file-alt"></i> Emergency Procedures</h3>
+                        <p>Access campus emergency protocols for various situations including weather, security threats, and more.</p>
+                        <button class="feature-button">View Procedures</button>
+                    </div>
+                    
+                    <div class="feature-card" onclick="reportIncident()">
+                        <h3><i class="fas fa-clipboard-list"></i> Incident Reporting</h3>
+                        <p>Report security concerns, suspicious activities, or non-emergency incidents anonymously.</p>
+                        <button class="feature-button">File Report</button>
+                    </div>
+                </div>
+                
+                <div class="safe-walk-request">
+                    <h3><i class="fas fa-walking"></i> Request Safe Walk</h3>
+                    <form id="safeWalkForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Current Location</label>
+                            <input type="text" id="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <input type="text" id="destination" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes"></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Submit Request</button>
+                    </form>
+                </div>
+                
+                <div class="campus-map">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Interactive Campus Map</h3>
+                        <p>View emergency phones, security stations, and safe routes</p>
+                    </div>
+                </div>
+                
+                <div class="security-status">
+                    <h3><i class="fas fa-info-circle"></i> Security Status</h3>
+                    <div class="status-item">
+                        <div>
+                            <span class="status-indicator status-active"></span>
+                            <span>Campus Security Patrols</span>
+                        </div>
+                        <span>Active</span>
+                    </div>
+                    <div class="status-item">
+                        <div>
+                            <span class="status-indicator status-active"></span>
+                            <span>Emergency Blue Phones</span>
+                        </div>
+                        <span>All Operational</span>
+                    </div>
+                    <div class="status-item">
+                        <div>
+                            <span class="status-indicator status-maintenance"></span>
+                            <span>West Parking Lot Lights</span>
+                        </div>
+                        <span>Maintenance Scheduled</span>
+                    </div>
+                    <div class="status-item">
+                        <div>
+                            <span class="status-indicator status-active"></span>
+                            <span>Security Camera System</span>
+                        </div>
+                        <span>Fully Operational</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="emergency-contacts">
+                <h2 class="section-title"><i class="fas fa-phone-alt"></i> Immediate Helplines</h2>
+                
+                <div class="helplines">
+                    <div class="helpline-card">
+                        <h3><i class="fas fa-building"></i> Campus Security</h3>
+                        <p>24/7 emergency campus security line</p>
+                        <div class="contact-info">
+                            <div><i class="fas fa-phone"></i> <a href="tel:+11234567890">+1 (123) 456-7890</a></div>
+                            <div><i class="fas fa-map-marker-alt"></i> Security Building, Main Campus</div>
+                        </div>
+                    </div>
+                    
+                    <div class="helpline-card">
+                        <h3><i class="fas fa-user-md"></i> Campus Counseling</h3>
+                        <p>24/7 mental health emergency support</p>
+                        <div class="contact-info">
+                            <div><i class="fas fa-phone"></i> <a href="tel:+19876543210">+1 (987) 654-3210</a></div>
+                            <div><i class="fas fa-clock"></i> Available 24/7</div>
+                        </div>
+                    </div>
+                    
+                    <div class="helpline-card">
+                        <h3><i class="fas fa-globe-americas"></i> National Suicide Prevention</h3>
+                        <p>Free, confidential support 24/7</p>
+                        <div class="contact-info">
+                            <div><i class="fas fa-phone"></i> <a href="tel:988">988</a></div>
+                            <div><i class="fas fa-link"></i> <a href="https://www.suicidepreventionlifeline.org" target="_blank">Visit Website</a></div>
+                        </div>
+                    </div>
+                    
+                    <div class="helpline-card">
+                        <h3><i class="fas fa-hands-helping"></i> Crisis Text Line</h3>
+                        <p>Text support for mental health crises</p>
+                        <div class="contact-info">
+                            <div><i class="fas fa-sms"></i> <a href="sms:741741">Text HOME to 741741</a></div>
+                            <div><i class="fas fa-clock"></i> Available 24/7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>If you're experiencing a life-threatening emergency, please call 911 immediately</p>
+            <p>© 2023 University Mental Health Support System</p>
+        </footer>
+    </div>
+    
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="modal-content">
+            <h2><i class="fas fa-exclamation-triangle"></i> Emergency Call</h2>
+            <p>You are about to connect to emergency services. Your location and student information will be shared with responders.</p>
+            <p>Do you want to proceed?</p>
+            <div class="modal-buttons">
+                <button class="modal-button cancel-button" id="cancelButton">Cancel</button>
+                <button class="modal-button confirm-button" id="confirmButton">Call Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Emergency Procedures Modal -->
+    <div class="procedures-modal" id="proceduresModal">
+        <div class="procedures-content">
+            <div class="procedures-header">
+                <h2><i class="fas fa-file-alt"></i> Campus Emergency Procedures</h2>
+                <button class="close-button" id="closeProcedures">&times;</button>
+            </div>
+            
+            <div class="emergency-category">
+                <h3><i class="fas fa-exclamation-triangle"></i> Active Threat Situation</h3>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-running"></i> RUN - If you can get away safely</h4>
+                    <ol>
+                        <li>Have an escape route and plan in mind</li>
+                        <li>Evacuate regardless of whether others agree to follow</li>
+                        <li>Leave your belongings behind</li>
+                        <li>Keep your hands visible as you exit</li>
+                        <li>Call 911 when you are safe</li>
+                    </ol>
+                </div>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-eye-slash"></i> HIDE - If evacuation is not possible</h4>
+                    <ol>
+                        <li>Lock and/or barricade the door</li>
+                        <li>Silence your phone and other electronic devices</li>
+                        <li>Hide behind large objects if possible</li>
+                        <li>Remain very quiet</li>
+                        <li>Do not respond to anyone at the door</li>
+                    </ol>
+                </div>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-fist-raised"></i> FIGHT - As a last resort</h4>
+                    <ol>
+                        <li>Only when your life is in imminent danger</li>
+                        <li>Attempt to incapacitate the threat</li>
+                        <li>Act with physical aggression</li>
+                        <li>Improvise weapons or use items available</li>
+                        <li>Commit to your actions</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="emergency-category">
+                <h3><i class="fas fa-bolt"></i> Severe Weather Emergency</h3>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-tornado"></i> Tornado Warning</h4>
+                    <ol>
+                        <li>Seek shelter immediately in the lowest level of the building</li>
+                        <li>Go to an interior room or hallway without windows</li>
+                        <li>Get under a sturdy piece of furniture if possible</li>
+                        <li>Use your arms to protect your head and neck</li>
+                        <li>Remain in shelter until the all-clear is given</li>
+                    </ol>
+                </div>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-cloud-showers-heavy"></i> Flash Flood Warning</h4>
+                    <ol>
+                        <li>Move to higher ground immediately</li>
+                        <li>Avoid walking or driving through flood waters</li>
+                        <li>Just 6 inches of moving water can knock you down</li>
+                        <li>1 foot of moving water can sweep your vehicle away</li>
+                        <li>Stay away from bridges over fast-moving water</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="emergency-category">
+                <h3><i class="fas fa-fire-extinguisher"></i> Fire Emergency</h3>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-fire"></i> If you discover a fire</h4>
+                    <ol>
+                        <li>Activate the nearest fire alarm pull station</li>
+                        <li>Evacuate the building immediately</li>
+                        <li>Close all doors behind you as you leave</li>
+                        <li>Use stairs, not elevators</li>
+                        <li>Call 911 once you are in a safe location</li>
+                    </ol>
+                </div>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-smoke"></i> If trapped in a room</h4>
+                    <ol>
+                        <li>Close the door and seal cracks with wet cloth if possible</li>
+                        <li>Call 911 to report your exact location</li>
+                        <li>Signal from window with light-colored cloth or flashlight</li>
+                        <li>Stay low where the air is less toxic</li>
+                        <li>Wait to be rescued by emergency personnel</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="emergency-category">
+                <h3><i class="fas fa-first-aid"></i> Medical Emergency</h3>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-plus-square"></i> First Response</h4>
+                    <ol>
+                        <li>Check the scene for safety before approaching</li>
+                        <li>Call campus security at (123) 456-7890 or 911</li>
+                        <li>Provide your exact location and nature of emergency</li>
+                        <li>Do not move the victim unless absolutely necessary</li>
+                        <li>Remain with the victim until help arrives</li>
+                    </ol>
+                </div>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-heartbeat"></i> CPR Guidelines</h4>
+                    <ol>
+                        <li>Check responsiveness - tap and shout "Are you okay?"</li>
+                        <li>Call for help and activate emergency response</li>
+                        <li>Open airway with head-tilt chin-lift maneuver</li>
+                        <li>Check for breathing for no more than 10 seconds</li>
+                        <li>Begin chest compressions if no normal breathing</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="emergency-category">
+                <h3><i class="fas fa-radiation"></i> Hazardous Materials</h3>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-flask"></i> Chemical Spill</h4>
+                    <ol>
+                        <li>Alert people in the immediate area to evacuate</li>
+                        <li>If spilled material is flammable, turn off ignition sources</li>
+                        <li>Attend to injured or contaminated persons first</li>
+                        <li>Evacuate to a safe distance upwind from the spill</li>
+                        <li>Call campus security and provide details of the spill</li>
+                    </ol>
+                </div>
+                
+                <div class="procedure-steps">
+                    <h4><i class="fas fa-biohazard"></i> If exposed to hazardous materials</h4>
+                    <ol>
+                        <li>Flush exposed skin with water for at least 15 minutes</li>
+                        <li>Remove contaminated clothing carefully</li>
+                        <li>For eye exposure, flush eyes at eyewash station</li>
+                        <li>Seek medical attention immediately</li>
+                        <li>Report the exposure to your supervisor/instructor</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <header>
-        <h1>Electronics Store</h1>
-        <nav>
-            <ul>
-                <li><button class="nav-btn" onclick="scrollToSection('home')">Home</button></li>
-                <li><button class="nav-btn" onclick="scrollToSection('products')">Products</button></li>
-                <li><button class="nav-btn" onclick="scrollToSection('contact')">Contact</button></li>
-                <li id="cart">🛒 Cart (<span id="cart-count">0</span>)</li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section id="home" class="banner">
-        <div class="banner-content">
-            <h2>🔥 Latest Electronics Deals!</h2>
-            <p>Get unbeatable prices on the latest gadgets, accessories, and more. Don't miss out!</p>
-            <button class="shop-now-btn" onclick="scrollToSection('products')">🛍️ Shop Now</button>
-        </div>
-    </section>
-    <section id="products" class="products">
-        <button class="nav-btn" onclick="scrollToSection('laptops')">📂 Laptops</button>
-        <button class="nav-btn" onclick="scrollToSection('audio')">🎧 Headphones & Bluetooth</button>
-        <button class="nav-btn" onclick="scrollToSection('smartphones')">📱 Smartphones</button>
-    </section>
-    
-    <h1 id="laptops">Laptops</h1>
-    <section id="products" class="products">
-        <div class="product">
-            <img src="laptop.jpg" alt="Laptop">
-            <h2>HP Laptop</h2>
-            <p>$999.00</p>
-            <button class="add-to-cart" data-name="HP Laptop" data-price="999">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="appleimages.jpg" alt="Laptop">
-            <h2>Apple MacBook</h2>
-            <p>$1299.00</p>
-            <button class="add-to-cart" data-name="Apple MacBook" data-price="999">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="dell-laptops-500x500.webp" alt="Laptop">
-            <h2>Dell Laptop</h2>
-            <p>$899.00</p>
-            <button class="add-to-cart" data-name="Dell Laptop" data-price="999">Add to Cart</button>
-        </div>
-    </section>
-    <h1 id="audio">Headphones & Bluetooths</h1>
-    <section id="products" class="products">
-        <div class="product">
-            <img src="Urbanears Plattan 2_.jpg" alt="Headphones">
-            <h2>Urbanears Plattan</h2>
-            <p>$199.00</p>
-            <button class="add-to-cart" data-name="Urbanears Plattan" data-price="199">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="beatsstudiopro.jpg" alt="Headphones">
-            <h2>Beast Studio Pro Headphones</h2>
-            <p>$299.00</p>
-            <button class="add-to-cart" data-name="Beast Studio Pro Headphones" data-price="199">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="61GrtFhbGSL._SL1500_.boatrockerzwebp.webp" alt="Headphones">
-            <h2>Boat Rocker Wireless Bluetooth</h2>
-            <p>$399.00</p>
-            <button class="add-to-cart" data-name="Wireless Headphones" data-price="199">Add to Cart</button>
-        </div>
-    </section>
-    <h1 id="smartphones">Smartphones</h1>
-    <section id="products" class="products">
-        <div class="product">
-            <img src="smartphone.webp" alt="Smartphone">
-            <h2>iphone</h2>
-            <p>$999.00</p>
-            <button class="add-to-cart" data-name="iphone" data-price="699">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="phonesOIP.jpeg" alt="Smartphone">
-            <h2>Samsung Galaxy S24 Ultra</h2>
-            <p>$1199.00</p>
-            <button class="add-to-cart" data-name="Samsung Galaxy S24 Ultra" data-price="699">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="Smart.webp" alt="Smartphone">
-            <h2>Google Pixel</h2>
-            <p>$799.00</p>
-            <button class="add-to-cart" data-name="Google Pixel " data-price="699">Add to Cart</button>
-        </div>
-    </section>
-    
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <p>Email: divyaasruti.naagireddy@sasi.ac.in</p>
-        <p>Phone: **********</p>
-    </section>
-    
-
-    <section id="cart-items"></section>
-
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sosButton = document.getElementById('sosButton');
+            const countdownElement = document.getElementById('countdown');
+            const confirmationModal = document.getElementById('confirmationModal');
+            const cancelButton = document.getElementById('cancelButton');
+            const confirmButton = document.getElementById('confirmButton');
+            const safeWalkForm = document.getElementById('safeWalkForm');
+            const proceduresModal = document.getElementById('proceduresModal');
+            const closeProcedures = document.getElementById('closeProcedures');
+            
+            let countdown;
+            let countdownValue;
+            
+            // SOS button click event
+            sosButton.addEventListener('click', function() {
+                confirmationModal.classList.add('visible');
+            });
+            
+            // Cancel button event
+            cancelButton.addEventListener('click', function() {
+                confirmationModal.classList.remove('visible');
+                resetCountdown();
+            });
+            
+            // Confirm button event
+            confirmButton.addEventListener('click', function() {
+                confirmationModal.classList.remove('visible');
+                startCountdown();
+            });
+            
+            // Safe Walk form submission
+            safeWalkForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Your Safe Walk request has been submitted. Security will contact you shortly.');
+                safeWalkForm.reset();
+            });
+            
+            // Procedures modal close
+            closeProcedures.addEventListener('click', function() {
+                proceduresModal.classList.remove('visible');
+            });
+            
+            // Close modal if clicked outside content
+            proceduresModal.addEventListener('click', function(e) {
+                if (e.target === proceduresModal) {
+                    proceduresModal.classList.remove('visible');
+                }
+            });
+            
+            // Start the countdown
+            function startCountdown() {
+                countdownValue = 5;
+                countdownElement.textContent = countdownValue;
+                countdownElement.style.opacity = '1';
+                sosButton.style.pointerEvents = 'none';
+                
+                countdown = setInterval(function() {
+                    countdownValue--;
+                    countdownElement.textContent = countdownValue;
+                    
+                    if (countdownValue <= 0) {
+                        clearInterval(countdown);
+                        emergencyCall();
+                    }
+                }, 1000);
+            }
+            
+            // Reset the countdown
+            function resetCountdown() {
+                clearInterval(countdown);
+                countdownElement.style.opacity = '0';
+                sosButton.style.pointerEvents = 'auto';
+            }
+            
+            // Simulate emergency call
+            function emergencyCall() {
+                alert("Connecting to emergency services...\nYour location and student information have been shared.");
+                // In a real application, this would:
+                // 1. Call the emergency services API
+                // 2. Send the user's location and information
+                // 3. Connect to a live responder
+                
+                // Reset after simulation
+                setTimeout(function() {
+                    resetCountdown();
+                    alert("Emergency call completed. Help is on the way.");
+                }, 3000);
+            }
+            
+            // Make helpline cards clickable
+            const helplineCards = document.querySelectorAll('.helpline-card');
+            helplineCards.forEach(card => {
+                const phoneLink = card.querySelector('a[href^="tel:"]');
+                const smsLink = card.querySelector('a[href^="sms:"]');
+                
+                card.addEventListener('click', function(e) {
+                    if (e.target.tagName !== 'A' && !e.target.closest('a')) {
+                        if (phoneLink) {
+                            window.location.href = phoneLink.getAttribute('href');
+                        } else if (smsLink) {
+                            window.location.href = smsLink.getAttribute('href');
+                        }
+                    }
+                });
+            });
+            
+            // New security feature functions
+            window.requestSafeWalk = function() {
+                document.querySelector('.safe-walk-request').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            };
+            
+            window.viewEmergencyProcedures = function() {
+                proceduresModal.classList.add('visible');
+            };
+            
+            window.reportIncident = function() {
+                alert("Redirecting to Incident Reporting Form...");
+                // In a real implementation, this would open a form or new page
+            };
+        });
+    </script>
 </body>
 </html>
