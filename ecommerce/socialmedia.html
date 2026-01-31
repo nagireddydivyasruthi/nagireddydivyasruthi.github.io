@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+        .navbar {
+            background-color: #4267B2;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin: 0 15px;
+            cursor: pointer;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .container {
+            width: 50%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .post {
+            margin-bottom: 20px;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+        }
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .post-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .post-actions {
+            margin-top: 10px;
+        }
+        .post-actions button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #4267B2;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .post-actions button:hover {
+            background-color: #365899;
+        }
+    </style>
+    <script>
+        function navigateTo(page) {
+            alert("Navigating to " + page);
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>SocialApp</h1>
+        <ul>
+            <li onclick="navigateTo('Home')"><a href="#">Home</a></li>
+            <li onclick="navigateTo('Profile')"><a href="#">Profile</a></li>
+            <li onclick="navigateTo('Notifications')"><a href="#">Notifications</a></li>
+            <li onclick="navigateTo('Logout')"><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="post">
+            <div class="post-header">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsRITgy15ccQD7WyCR7US7T8LxriW-bAmq5A&s" alt="User" class="avatar">
+                <h2>John Doe</h2>
+            </div>
+            <p>Enjoying the beautiful sunset! #Nature</p>
+            <img src="https://media.istockphoto.com/id/155288168/photo/max-patch-sunset.jpg?s=612x612&w=0&k=20&c=kS0FyNaQguD3PhpYnvfl6SbYtJw0CiItKDxx5lDxGU4="  alt="Sunset" class="post-image">
+            <div class="post-actions">
+                <button>Like</button>
+                <button>Comment</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
